@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.personel.second.mapper.PersonelMapper" >
+ <resultMap id="PersonelResult" type="com.personel.second.dto.Person" >
+   <result column="ID" property="id" />
+   <result column="DEPARTID" property="departID"/>
+   <result column="NAME" property="name"/>
+   <result column="FURIGANA" property="furigana"/>
+   <result column="SEX" property="sex"/>
+   <result column="BIRTHDAY" property="birthday"/>
+   <result column="ADRESS" property="adress"/>
+   <result column="HOMEPHONE" property="homePhone"/>
+   <result column="SUMAHOPHONE" property="sumahoPhone"/>
+   <result column="EMAIL" property="email"/>
+   <result column="POSITIONID" property="positionID"/>
+   <result column="JOINDATE" property="joinDate"/>
+   <result column="STATUS" property="status"/>
+ </resultMap>
+
+ <insert id="insertStuff" parameterType="com.personel.second.dto.Person" >
+   insert into stuff ( ID,DEPARTID,NAME,FURIGANA,SEX,BIRTHDAY,ADRESS,HOMEPHONE,SUMAHOPHONE,
+   EMAIL,POSITIONID,JOINDATE,STATUS)
+   values (#{id},#{departID},#{name},#{furigana} ,#{sex}, #{birthday},
+   #{adress},#{homePhone},#{sumahoPhone},#{email},#{positionID},#{joinDate},#{status})
+   <selectKey resultType="java.lang.Integer" order="AFTER">
+      select LAST_INSERT_ID()
+   </selectKey>
+ </insert>
+
+</mapper>
